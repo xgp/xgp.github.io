@@ -3,7 +3,7 @@ slug: luxury-belief-open-source-license
 title: "The Luxury Belief of the Open Source License"
 date: 2026-09-26
 authors: [xgp]
-description: "An interesting summary goes here to use in the meta description only"
+description: "Treating a permissive license like Apache 2.0 as a mark of virtue is a luxury belief held by engineers whose employers can afford it. A license is a business instrument, chosen to protect a revenue model, and it should be discussed as one."
 ---
 
 ## **The license as a halo**
