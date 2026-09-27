@@ -1,0 +1,23 @@
+{
+  "title": "xgp",
+  "github": "xgp",
+  "postsPerPage": 10,
+  "headingFont": "Source Serif 4",
+  "bodyFont": "Inter",
+  "fontPicker": true,
+  "fonts": {
+    "Source Serif 4": "serif",
+    "Newsreader": "serif",
+    "Fraunces": "serif",
+    "Lora": "serif",
+    "Literata": "serif",
+    "EB Garamond": "serif",
+    "Crimson Pro": "serif",
+    "Playfair Display": "serif",
+    "Inter": "sans-serif",
+    "Source Sans 3": "sans-serif",
+    "IBM Plex Sans": "sans-serif",
+    "Public Sans": "sans-serif",
+    "Figtree": "sans-serif"
+  }
+}
