@@ -99,6 +99,7 @@ function layout({ title, description, back, body }) {
 ${description ? `<meta name="description" content="${esc(description)}">` : ""}
 <script>${themeScript}</script>
 ${fontHead()}
+<link rel="alternate" type="application/rss+xml" title="${esc(config.title)}" href="${BASE}rss.xml">
 <link rel="stylesheet" href="${BASE}style.css">
 </head>
 <body>
@@ -166,6 +167,40 @@ ${post.truncated ? `<p><a class="more" href="${postUrl(post)}">Read more →</a>
   return layout({ title: config.title, back: page > 1, body: items + nav });
 }
 
+// Feed readers need absolute URLs, including for links and images inside post HTML.
+function renderRss(posts) {
+  const origin = config.url.replace(/\/+$/, "");
+  const absolute = (html) => html.replace(/(href|src)="\//g, `$1="${origin}/`);
+  const cdata = (s) => `<![CDATA[${s.replace(/]]>/g, "]]]]><![CDATA[>")}]]>`;
+  const items = posts
+    .map((post) => {
+      const link = origin + postUrl(post);
+      return `  <item>
+    <title>${esc(post.title)}</title>
+    <link>${link}</link>
+    <guid isPermaLink="true">${link}</guid>
+    <pubDate>${post.date.toUTCString()}</pubDate>
+${post.authors.map((a) => `    <dc:creator>@${esc(a)}</dc:creator>`).join("\n")}
+    <description>${cdata(post.description || absolute(post.excerpt))}</description>
+    <content:encoded>${cdata(absolute(post.html))}</content:encoded>
+  </item>`;
+    })
+    .join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+  <title>${esc(config.title)}</title>
+  <link>${origin}${BASE}</link>
+  <description>${esc(config.description)}</description>
+  <language>en</language>
+  <atom:link href="${origin}${BASE}rss.xml" rel="self" type="application/rss+xml"/>
+  ${posts.length ? `<lastBuildDate>${posts[0].date.toUTCString()}</lastBuildDate>` : ""}
+${items}
+</channel>
+</rss>
+`;
+}
+
 function write(rel, content) {
   const file = path.join(OUT, rel);
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -189,6 +224,7 @@ function build() {
   if (fs.existsSync(path.join(POSTS, "assets"))) {
     fs.cpSync(path.join(POSTS, "assets"), path.join(OUT, "assets"), { recursive: true });
   }
+  write("rss.xml", renderRss(posts.slice(0, 10)));
   write(".nojekyll", "");
   console.log(`Built ${posts.length} post(s), ${pages} page(s) → dist/ (base ${BASE})`);
 }
@@ -197,7 +233,7 @@ build();
 
 if (process.argv.includes("--serve")) {
   const port = Number(process.env.PORT || 3000);
-  const types = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".gif": "image/gif", ".webp": "image/webp" };
+  const types = { ".html": "text/html", ".xml": "application/rss+xml", ".css": "text/css", ".js": "text/javascript", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".gif": "image/gif", ".webp": "image/webp" };
   http
     .createServer((req, res) => {
       let file = path.join(OUT, decodeURIComponent(req.url.split("?")[0]));
