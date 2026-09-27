@@ -182,7 +182,7 @@ function renderRss(posts) {
     <pubDate>${post.date.toUTCString()}</pubDate>
 ${post.authors.map((a) => `    <dc:creator>@${esc(a)}</dc:creator>`).join("\n")}
     <description>${cdata(post.description || absolute(post.excerpt))}</description>
-    <content:encoded>${cdata(absolute(post.html))}</content:encoded>
+    <content:encoded>${cdata(absolute(post.excerpt))}</content:encoded>
   </item>`;
     })
     .join("\n");
