@@ -119,7 +119,7 @@ ${fontPicker()}
 `;
 }
 
-const postUrl = (post) => `${BASE}${post.slug}/`;
+const postUrl = (post) => `${BASE}posts/${post.slug}/`;
 
 const meta = (post) =>
   `<p class="meta"><time datetime="${post.date.toISOString().slice(0, 10)}">${formatDate(post.date)}</time> · ${post.authors
@@ -175,7 +175,7 @@ function write(rel, content) {
 function build() {
   fs.rmSync(OUT, { recursive: true, force: true });
   const posts = loadPosts();
-  for (const post of posts) write(`${post.slug}/index.html`, renderPost(post));
+  for (const post of posts) write(`posts/${post.slug}/index.html`, renderPost(post));
 
   const size = config.postsPerPage;
   const pages = Math.max(1, Math.ceil(posts.length / size));
