@@ -91,7 +91,7 @@ const themeScript = fs.readFileSync(path.join(SRC, "theme.js"), "utf8");
 
 function layout({ title, description, back, body }) {
   return `<!doctype html>
-<html lang="en">
+<html lang="en"${config.fontPicker ? " data-font-picker" : ""}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

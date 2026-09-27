@@ -2,9 +2,9 @@
   "title": "xgp",
   "github": "xgp",
   "postsPerPage": 10,
-  "headingFont": "Source Serif 4",
+  "headingFont": "EB Garamond",
   "bodyFont": "Inter",
-  "fontPicker": true,
+  "fontPicker": false,
   "fonts": {
     "Source Serif 4": "serif",
     "Newsreader": "serif",
