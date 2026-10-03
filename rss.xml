@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+  <title>xgp</title>
+  <link>https://xgp.github.io/</link>
+  <description>Writing by @xgp</description>
+  <language>en</language>
+  <atom:link href="https://xgp.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+  <lastBuildDate>Sat, 03 Oct 2026 00:00:00 GMT</lastBuildDate>
+  <item>
+    <title>The Loop: Why Nobody Admits They Had a Bad Time on the Riviera</title>
+    <link>https://xgp.github.io/posts/bad-time-riviera/</link>
+    <guid isPermaLink="true">https://xgp.github.io/posts/bad-time-riviera/</guid>
+    <pubDate>Sat, 03 Oct 2026 00:00:00 GMT</pubDate>
+    <dc:creator>@xgp</dc:creator>
+    <description><![CDATA[A decade on the Côte d'Azur shows why the Riviera's reputation reflects what tourists say, not what they experience.]]></description>
+    <content:encoded><![CDATA[<p>Every morning in summer, a white ship the size of an apartment block would appear in the bay below my house in Villefranche-sur-Mer. By nine, its tenders were shuttling people to the quay. By ten, the old town was full of them, holding phones in front of the painted facades, queuing for a nineteen-euro Aperol Spritz, buying lavender sachets stitched in a factory nowhere near Provence. By four they were gone, and the quay was hosed down for the next ship.</p>
+]]></content:encoded>
+  </item>
+  <item>
+    <title>The Luxury Belief of the Open Source License</title>
+    <link>https://xgp.github.io/posts/luxury-belief-open-source-license/</link>
+    <guid isPermaLink="true">https://xgp.github.io/posts/luxury-belief-open-source-license/</guid>
+    <pubDate>Sat, 26 Sep 2026 00:00:00 GMT</pubDate>
+    <dc:creator>@xgp</dc:creator>
+    <description><![CDATA[Treating a permissive license like Apache 2.0 as a mark of virtue is a luxury belief held by engineers whose employers can afford it. A license is a business instrument, chosen to protect a revenue model, and it should be discussed as one.]]></description>
+    <content:encoded><![CDATA[<h2><strong>The license as a halo</strong></h2>
+<p>Spend enough time in the Keycloak community and you will hear a particular argument, offered as though it settles everything. Keycloak is Apache 2.0. Anyone can take it, fork it, host it, sell it. And because of that, the reasoning goes, the people who build it stand on higher ground than the people who build Elasticsearch, or Redis, or Terraform. The license is not just a legal instrument. It is a character reference.</p>
+]]></content:encoded>
+  </item>
+</channel>
+</rss>
